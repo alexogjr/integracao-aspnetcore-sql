@@ -7,7 +7,6 @@ A ideia é que o banco de dados seja manipulável via web. A base é essa.
 
 <ul>
 <li>.NET Framework 8.0</li>
-<br>
 <li>MySQL 9.1.0</li>
 </ul>
 
