@@ -1,0 +1,11 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="w-full h-[100dvh] py-16">
+    <div class="w-[80%] h-[50dvh] bg-gray-900 text-white" style="margin: 0 auto">
+        @IndexModel.logs
+    </div>
+</div>

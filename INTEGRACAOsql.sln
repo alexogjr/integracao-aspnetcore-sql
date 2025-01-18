@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INTEGRACAOsql", "INTEGRACAOsql\INTEGRACAOsql.csproj", "{FEB8D033-9675-4C9D-AA9E-6D2893E43294}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEB8D033-9675-4C9D-AA9E-6D2893E43294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEB8D033-9675-4C9D-AA9E-6D2893E43294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEB8D033-9675-4C9D-AA9E-6D2893E43294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEB8D033-9675-4C9D-AA9E-6D2893E43294}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
