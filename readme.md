@@ -7,10 +7,8 @@ A ideia é que o banco de dados seja manipulável via web. A base é essa.
 
 <ul>
 <li>.NET Framework 8.0</li>
-<li>`<TargetFramework>net8.0</TargetFramework>`</li>
 <br>
 <li>MySQL 9.1.0</li>
-<li>`<PackageReference Include="MySql.Data" Version="9.1.0" />`</li>
 </ul>
 
 Também desativei a <b>Nullable</b> pois estava dando alguns problemas, mas vou contornar e reativar nos próximos commits. 
