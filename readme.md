@@ -6,7 +6,7 @@ A ideia é que o banco de dados seja manipulável via web. A base é essa.
 ## O que foi utilizado?
 
 <ul>
-<li>.NET Framework 8.0li>
+<li>.NET Framework 8.0</li>
 <li><TargetFramework>net8.0</TargetFramework></li>
 <br>
 <li>MySQL 9.1.0</li>
