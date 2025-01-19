@@ -1,90 +1,235 @@
-using Microsoft.AspNetCore.Components.Forms;
+using INTEGRACAOsql.Pages;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
-using MySqlX.XDevAPI;
-using System.Collections.Generic;
-using System.Data.Common;
-using static Mysqlx.Expect.Open.Types.Condition.Types;
-using System.Security.Cryptography.Xml;
-using Org.BouncyCastle.Asn1.Cms;
+using System;
+using System.IO;
 
 namespace INTEGRACAOsql.Pages
 {
+    using Microsoft.AspNetCore.Hosting.Server;
+    using Mysqlx.Expr;
+    using System;
+    using System.Data.Common;
+    using System.IO;
+    using System.Security.Cryptography;
+    using System.Security.Cryptography.X509Certificates;
+    using System.Text;
+
     public class IndexModel : PageModel
     {
-
+        // variáveis globais
+        public static string setComando { get; set; }
         public static string logs { get; set; }
+        public static string myConnectionString { get; set; }
+        public static string server { get; set; }
+        public static string uid { get; set; }
+        public static string pwd { get; set; }
+        public static string database { get; set; }
+        public static bool statusConexao { get; set; }
+        
+        MySqlConnection myConnection;
+        
+        string comando = IndexModel.setComando;
 
-        public static void conectarDB()
+        private string conectar(string comando)
         {
-
-            Console.WriteLine("Entrou aqui");
-
-            MySqlConnection myConnection;
-
-            string myConnectionString;
-            //set the correct values for your server, user, password and database name
-            myConnectionString = "server=172.93.104.61;uid=u660_KW6rMuJi16;pwd=OJLAy4Jl@3kqHdmScHOSpl!8;database=s660_globais";
-
             try
             {
-                Console.WriteLine("Block try catch");
 
-                myConnection = new MySql.Data.MySqlClient.MySqlConnection(myConnectionString);
-                Console.WriteLine("Chegou aqui");
-                //open a connection
+                myConnection = new MySqlConnection(myConnectionString);
+                Console.WriteLine("passou na db");
 
-                myConnection.Open();
-                Console.WriteLine("Abriu conexão");
-
-                // create a MySQL command and set the SQL statement with parameters
-                MySqlCommand myCommand = new MySqlCommand();
-                myCommand.Connection = myConnection;
-                myCommand.CommandText = @"SELECT * FROM usuarios";
-                Console.WriteLine("Selecionou");
-
-                // execute the command and read the results
-                using var myReader = myCommand.ExecuteReader();
+                // Criando o comando e setando os parâmetros
+                MySqlCommand myCommand = new MySqlCommand
                 {
-                    while (myReader.Read())
+                    Connection = myConnection,
+                    CommandText = comando
+                };
+
+                // Executando o comando e vendo os resultados
+                using var myReader = myCommand.ExecuteReader();
+                string resultado = "";
+                int index = 0;
+
+                while (myReader.Read())
+                {
+                    index = index + 1;
+                    Console.WriteLine("Index: " + index);
+                    if (index > 3)
                     {
-                        Console.WriteLine("Block while");
+                        Console.WriteLine($"Index: {index}, com resultado: {resultado}");
+                        CriarArquivo(resultado);
+                    } else
+                    {
                         var id = myReader.GetInt32("idusuarios");
                         var usuarios = myReader.GetString("nomeusuarios");
 
-                        Console.WriteLine($"ID do Usuário: {id}");
-                        Console.WriteLine($"Nome do Usuário: {usuarios}");
+                        // Guardar e enviar os resultados para a variável logs
+                        Console.WriteLine("Logs: " + resultado);
+                        resultado += $"{id}, {usuarios}\n";
 
-                        var mensagem = $"{id}, {usuarios}";
-                        IndexModel.logs = mensagem;
+                        Console.WriteLine($"Index: {index}, com resultado: {resultado}");
+
+                        if (index == 3)
+                        {
+                            IndexModel.logs = $"Resultado: {resultado}\n";
+                            CriarArquivo(resultado);
+                        }
                     }
+                        
                 }
+
                 myConnection.Close();
+                return resultado;  // Retorna o resultado obtido
+
             }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
+            catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
-                //string message = ex.Message;
+                var mensagem = $"Erro: {ex.Message}";
+                return mensagem;  // Retorna a mensagem de erro
             }
         }
-        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        // Método para criar um arquivo
+        public static void CriarArquivo(string conteudo)
         {
-            _logger = logger;
+            using (StreamWriter writer = System.IO.File.AppendText("/logs/logs.txt"))
+            {
+                writer.WriteLine(conteudo);
+            }
         }
 
-        //public static void mainLogs(string logging)
-        //{
-        //    string logs = logging;
-        //}
+        // coletando o input
+        [HttpPost]
+        public IActionResult OnPostComandos(string comando)
+        {
+            Console.WriteLine("Recebido no Post: " + comando);
+            IndexModel.setComando = comando;
 
+            comando = IndexModel.setComando;
+            conectar(comando);
+
+            // return pq se não o IActionResult dá cria
+            return RedirectToPage();
+        }
+
+        void abrirConexao(string stringconexao, string database)
+        {
+            try
+            {
+                myConnection = new MySqlConnection(myConnectionString);
+                myConnection.Open();
+                IndexModel.statusConexao = true;
+                Console.WriteLine("Conexão aberta");
+                
+                try
+                {
+                teste(database);
+
+                } catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            } catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                IndexModel.statusConexao = false;
+            }
+        }
+
+        // coletando o input de login
+        [HttpPost]
+        public IActionResult OnPostCredenciais(string server, string uid, string pwd, string database)
+        {
+
+            Console.WriteLine($"Server: {server}");
+            Console.WriteLine($"UID: {uid}");
+            Console.WriteLine($"Password: {pwd}");
+            Console.WriteLine($"Database: {database}");
+
+            myConnectionString = $"server={server};uid={uid};pwd={pwd};database={database}";
+
+            abrirConexao(myConnectionString, database);
+            // return pq se não o IActionResult dá cria
+            return RedirectToPage();
+        }
+
+        private string teste(string database)
+        {
+            try
+            {
+
+
+                MySqlConnection myConnection;
+
+
+
+                myConnection = new MySqlConnection(myConnectionString);
+
+                if (myConnection.State != System.Data.ConnectionState.Open)
+                {
+                    Console.WriteLine("Conexão não está aberta. Tentando abrir...");
+                    myConnection.Open();
+                }
+
+                Console.WriteLine("passou na db");
+                Console.WriteLine("DB: " + database);
+
+                /* inserir este comando na funcao TESTE()
+                * SHOW TABLES;
+                */
+
+                // Criando o comando e setando os parâmetros
+                MySqlCommand myCommand = new MySqlCommand
+                {
+                    Connection = myConnection,
+                    CommandText = $"SELECT * FROM {database}"
+                };
+
+                // Executando o comando e vendo os resultados
+                using var myReader = myCommand.ExecuteReader();
+                string resultado = "";
+                int index = 0;
+
+                while (myReader.Read())
+                {
+                    index = index + 1;
+                    Console.WriteLine("Index: " + index);
+                    if (index > 3)
+                    {
+                        Console.WriteLine($"Index: {index}, com resultado: {resultado}");
+                        CriarArquivo(resultado);
+                    }
+                    else
+                    {
+                        var table = myReader.GetSchemaTable();
+                        // Guardar e enviar os resultados para a variável logs
+                        Console.WriteLine("Logs: " + table);
+                        resultado = "foi";
+                    }
+
+                }
+
+                myConnection.Close();
+                return resultado;  // Retorna o resultado obtido
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                var mensagem = $"Erro: {ex.Message}";
+                return mensagem;  // Retorna a mensagem de erro
+            }
+        }
+
+
+        // get normal
+        [HttpGet]
         public void OnGet()
         {
-            conectarDB();
-             Console.WriteLine("Aqui: " + IndexModel.logs);
         }
     }
 }
