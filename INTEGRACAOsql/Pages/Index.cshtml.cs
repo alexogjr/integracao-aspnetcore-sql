@@ -55,27 +55,28 @@ namespace INTEGRACAOsql.Pages
 
                 while (myReader.Read())
                 {
-                    //var result = myReader.GetValue(0);
-                    //Console.WriteLine($"Resultado: {result}");
 
-
-                        // tenho que acertar esse for aqui, mas já são 00:35 e preciso acordar cedo :c
+                    // gambiarra do gepeteco pra organizar as strings nas logs
+                    string linhaAtual = "";
                         for (int i = 0; i < myReader.FieldCount; i++)
                         {
-
                             var valor = myReader.GetValue(i); // coletar possíveis colunas
-
-                            // indesejado > valor sendo floodado no console por conta desse amigão aqui
-                            resultado += $"{valor}\n"; // Concatenar os valores separados por tabulação
-                        Console.WriteLine(valor);
+                            // filtra valores numéricos pra não irem para as logs
+                            if (!(valor is int || valor is long || valor is decimal || valor is double || valor is float))
+                            {
+                                linhaAtual += $"{valor}\t"; // Concatenar os valores não numéricos com tabulação
+                                Console.WriteLine($"Dentro do for (não numérico): {i} - {valor}");
+                            }
                         }
-                         IndexModel.logs += $"Resultado: {resultado}";
-                         CriarArquivo(resultado);
+
+                    resultado += linhaAtual.TrimEnd() + "\n"; // quebra de linha
+                    IndexModel.logs += $"{linhaAtual.TrimEnd()}\n"; // loggando a linha
+                    CriarArquivo(linhaAtual.TrimEnd()); // salvando a linha no logs.txt
 
                 }
 
                 // myConnection.Close();
-                return resultado;  // Retorna o resultado obtido
+                return resultado;  // return só pra garantir
 
             }
             catch (MySqlException ex)
@@ -90,7 +91,7 @@ namespace INTEGRACAOsql.Pages
         public static void CriarArquivo(string conteudo)
         {
             // caminho extremamente especificamente específico, mas vou mudar isso
-            using (StreamWriter writer = System.IO.File.AppendText("C:/Users/Junior/Source/Repos/integracao-aspnetcore-sql/logs/logs.txt"))
+            using (StreamWriter writer = System.IO.File.AppendText("C:/Users/Junior/Source/Repos/INTEGRACAOsql/logs/logs.txt"))
             {
                 writer.WriteLine(conteudo);
             }
