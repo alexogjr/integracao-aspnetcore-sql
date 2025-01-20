@@ -5,14 +5,16 @@
 }
 
 <div class="w-full h-[100dvh] py-16 flex flex-row justify-between">
+
+    <!-- container do console -->
+
     <div class="w-[49%] h-[50dvh] bg-gray-900 text-white" style="margin: 0 auto">
         <div class="console w-full h-[49dvh]">
             <p class="text-white tracking-widest whitespace-pre-line">@IndexModel.logs</p>
         </div>
         <div class="mb-6 flex flex-row justify-content-between w-full">
 
-            <!-- Formulário que envia o email via POST -->
-            <form method="post" class="w-full flex flex-row justify-between" asp-page-handler="Comando">
+            <form method="post" class="w-full flex flex-row justify-between" asp-page-handler="Comandos">
                 <input placeholder="Insira comandos SQL aqui" class="w-full border border-gray-600 text-sm rounded-lg bg-gray-800 focus:ring-gray-900 focus:border-gray-900 block p-2.5 placeholder-white text-white" type="text" id="comando" name="comando" required>
                 <button class="hover:bg-gray-200 border border-gray-600 rounded-lg text-white bg-gray-800 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 focus:ring-gray-900 focus:border-gray-900 " style="margin: 0 auto" type="submit">
                       
@@ -27,6 +29,8 @@
         </div>
     </div>
 
+
+    <!-- form do login-->
     <div class="w-[49%] h-[50dvh] text-white" style="margin: 0 auto">
         <div class="console bg-gray-900 w-full flex items-center h-[49dvh]">
 

@@ -47,37 +47,33 @@ namespace INTEGRACAOsql.Pages
                     CommandText = comando
                 };
 
+                myConnection.Open();
+
                 // Executando o comando e vendo os resultados
                 using var myReader = myCommand.ExecuteReader();
                 string resultado = "";
-                int index = 0;
 
                 while (myReader.Read())
                 {
-                    index = index + 1;
-                    Console.WriteLine("Index: " + index);
-                    if (index > 3)
-                    {
-                        Console.WriteLine($"Index: {index}, com resultado: {resultado}");
-                        CriarArquivo(resultado);
-                    } else
-                    {
-                        var id = myReader.GetInt32("idusuarios");
-                        var usuarios = myReader.GetString("nomeusuarios");
+                    //var result = myReader.GetValue(0);
+                    //Console.WriteLine($"Resultado: {result}");
 
-                        // Guardar e enviar os resultados para a variável logs
-                        Console.WriteLine("Logs: " + resultado);
-                        resultado += $"{id}, {usuarios}\n";
 
-                        Console.WriteLine($"Index: {index}, com resultado: {resultado}");
-
-                        if (index == 3)
+                        // tenho que acertar esse for aqui, mas já são 00:35 e preciso acordar cedo :c
+                        for (int i = 0; i < myReader.FieldCount; i++)
                         {
-                            IndexModel.logs = $"Resultado: {resultado}\n";
-                            CriarArquivo(resultado);
+
+                            var valor = myReader.GetValue(i); // Obter o valor genérico
+
+                            // indesejado > valor sendo floodado no console por conta desse amigão aqui
+                            resultado += $"{valor}\n"; // Concatenar os valores separados por tabulação
+
+                            Console.WriteLine($"Dentro do for: " + resultado);
                         }
-                    }
-                        
+
+                         IndexModel.logs += $"Resultado: {resultado}";
+                         CriarArquivo(resultado);
+
                 }
 
                 myConnection.Close();
@@ -118,10 +114,11 @@ namespace INTEGRACAOsql.Pages
                 myConnection = new MySqlConnection(myConnectionString);
                 myConnection.Open();
                 IndexModel.statusConexao = true;
-                Console.WriteLine("Conexão aberta");
+                Console.WriteLine("Conexão aberta " + 2);
 
                 try
                 {
+                    Console.WriteLine("Abriu o try-catch da func de comandos");
                     conectar(comando);
 
                 }
@@ -141,6 +138,7 @@ namespace INTEGRACAOsql.Pages
             return RedirectToPage();
         }
 
+        // eu sei, comentário desnecessário, mas preciso dizer que essa função aqui abre a conexão
         void abrirConexao(string stringconexao, string database)
         {
             try

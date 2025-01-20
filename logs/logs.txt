@@ -1,10 +1,18 @@
-SchemaTable
-usuarios
+stable 
 
-stable
+stable 
+usuarios 
 
-stable
-usuarios
+1	junior	
+stable 
+
+stable 
+usuarios 
+
+stable 
+
+stable 
+usuarios 
 
 stable 
 
@@ -15,4 +23,47 @@ stable
 
 stable 
 usuarios 
+
+
+stable 
+
+stable 
+usuarios 
+
+junior	
+stable 
+
+stable 
+usuarios 
+
+1	junior	
+1	junior	2	felipe	
+1	junior	2	felipe	3	fernando	
+stable 
+
+stable 
+usuarios 
+
+1	junior	
+1	junior	2	felipe	
+1	junior	2	felipe	3	fernando	
+stable 
+
+stable 
+usuarios 
+
+1
+junior
+
+1
+junior
+2
+felipe
+
+1
+junior
+2
+felipe
+3
+fernando
 
