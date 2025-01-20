@@ -28,13 +28,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\INTEGRACAOsql.8c8wpeoxis.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8c8wpeoxis"},{"Name":"integrity","Value":"sha256-OGNO8IH4uRggO89XMaHs\u002B7ZtuyKeM35kHEKCITC1pUI="},{"Name":"label","Value":"_content/INTEGRACAOsql/INTEGRACAOsql.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1131"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022OGNO8IH4uRggO89XMaHs\u002B7ZtuyKeM35kHEKCITC1pUI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 18 Jan 2025 01:12:18 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1131"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022OGNO8IH4uRggO89XMaHs\u002B7ZtuyKeM35kHEKCITC1pUI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 18 Jan 2025 23:15:59 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/INTEGRACAOsql/INTEGRACAOsql.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\INTEGRACAOsql.8c8wpeoxis.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OGNO8IH4uRggO89XMaHs\u002B7ZtuyKeM35kHEKCITC1pUI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1131"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022OGNO8IH4uRggO89XMaHs\u002B7ZtuyKeM35kHEKCITC1pUI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 18 Jan 2025 01:12:18 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1131"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022OGNO8IH4uRggO89XMaHs\u002B7ZtuyKeM35kHEKCITC1pUI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 18 Jan 2025 23:15:59 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/INTEGRACAOsql/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>

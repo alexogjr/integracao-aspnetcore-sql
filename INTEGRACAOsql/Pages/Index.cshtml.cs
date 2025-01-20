@@ -95,7 +95,8 @@ namespace INTEGRACAOsql.Pages
         // Método para criar um arquivo
         public static void CriarArquivo(string conteudo)
         {
-            using (StreamWriter writer = System.IO.File.AppendText("/logs/logs.txt"))
+            // caminho extremamente especificamente específico, mas vou mudar isso
+            using (StreamWriter writer = System.IO.File.AppendText("C:/Users/Junior/Source/Repos/INTEGRACAOsql/logs/logs.txt"))
             {
                 writer.WriteLine(conteudo);
             }
@@ -109,7 +110,32 @@ namespace INTEGRACAOsql.Pages
             IndexModel.setComando = comando;
 
             comando = IndexModel.setComando;
-            conectar(comando);
+
+            // ter certeza de que a conexão está online
+
+            try
+            {
+                myConnection = new MySqlConnection(myConnectionString);
+                myConnection.Open();
+                IndexModel.statusConexao = true;
+                Console.WriteLine("Conexão aberta");
+
+                try
+                {
+                    conectar(comando);
+
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                IndexModel.statusConexao = false;
+            }
 
             // return pq se não o IActionResult dá cria
             return RedirectToPage();
@@ -162,10 +188,7 @@ namespace INTEGRACAOsql.Pages
             try
             {
 
-
                 MySqlConnection myConnection;
-
-
 
                 myConnection = new MySqlConnection(myConnectionString);
 
@@ -175,41 +198,37 @@ namespace INTEGRACAOsql.Pages
                     myConnection.Open();
                 }
 
-                Console.WriteLine("passou na db");
                 Console.WriteLine("DB: " + database);
 
                 /* inserir este comando na funcao TESTE()
-                * SHOW TABLES;
+                * SHOW TABLES - FEITO OK;
                 */
 
                 // Criando o comando e setando os parâmetros
                 MySqlCommand myCommand = new MySqlCommand
                 {
                     Connection = myConnection,
-                    CommandText = $"SELECT * FROM {database}"
+                    CommandText = $"SHOW TABLES FROM {database}"
                 };
 
                 // Executando o comando e vendo os resultados
                 using var myReader = myCommand.ExecuteReader();
                 string resultado = "";
-                int index = 0;
 
                 while (myReader.Read())
                 {
-                    index = index + 1;
-                    Console.WriteLine("Index: " + index);
-                    if (index > 3)
-                    {
-                        Console.WriteLine($"Index: {index}, com resultado: {resultado}");
+                        //var table = myReader.GetSchemaTable(); DESCARTA 
+                        //Guardar e enviar os resultados para a variável logs
+                        //Console.WriteLine("Logs: " + table);
+                        //resultado = $"{table}";
+
+                        // nova versão >
+
+                        string tableName = myReader.GetString(0);
+                        Console.WriteLine($"Tabela encontrada: {tableName}");
+                        resultado += $"{tableName} \n";
                         CriarArquivo(resultado);
-                    }
-                    else
-                    {
-                        var table = myReader.GetSchemaTable();
-                        // Guardar e enviar os resultados para a variável logs
-                        Console.WriteLine("Logs: " + table);
-                        resultado = "foi";
-                    }
+                        IndexModel.logs = resultado;
 
                 }
 

@@ -51,3 +51,4 @@ C:\Users\Junior\Source\Repos\INTEGRACAOsql\INTEGRACAOsql\obj\Debug\net8.0\refint
 C:\Users\Junior\Source\Repos\INTEGRACAOsql\INTEGRACAOsql\obj\Debug\net8.0\INTEGRACAOsql.pdb
 C:\Users\Junior\Source\Repos\INTEGRACAOsql\INTEGRACAOsql\obj\Debug\net8.0\INTEGRACAOsql.genruntimeconfig.cache
 C:\Users\Junior\Source\Repos\INTEGRACAOsql\INTEGRACAOsql\obj\Debug\net8.0\ref\INTEGRACAOsql.dll
+C:\Users\Junior\Source\Repos\INTEGRACAOsql\INTEGRACAOsql\obj\Debug\net8.0\INTEGRACAOsql.sourcelink.json
