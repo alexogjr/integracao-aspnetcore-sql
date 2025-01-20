@@ -3,50 +3,61 @@ stable
 stable 
 usuarios 
 
-1	junior	
-stable 
+1
+junior
 
-stable 
-usuarios 
+1
+junior
+2
+felipe
 
-stable 
-
-stable 
-usuarios 
-
-stable 
-
-stable 
-usuarios 
-
-stable 
-
-stable 
-usuarios 
-
+1
+junior
+2
+felipe
+3
+fernando
 
 stable 
 
 stable 
 usuarios 
 
-junior	
+1
+junior
+
+1
+junior
+2
+felipe
+
+1
+junior
+2
+felipe
+3
+fernando
+
 stable 
 
 stable 
 usuarios 
 
-1	junior	
-1	junior	2	felipe	
-1	junior	2	felipe	3	fernando	
-stable 
+1
+junior
 
-stable 
-usuarios 
+1
+junior
+2
+felipe
 
-1	junior	
-1	junior	2	felipe	
-1	junior	2	felipe	3	fernando	
+1
+junior
+2
+felipe
+3
+fernando
+
 stable 
 
 stable 

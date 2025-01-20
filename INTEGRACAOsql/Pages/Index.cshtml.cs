@@ -63,20 +63,18 @@ namespace INTEGRACAOsql.Pages
                         for (int i = 0; i < myReader.FieldCount; i++)
                         {
 
-                            var valor = myReader.GetValue(i); // Obter o valor genérico
+                            var valor = myReader.GetValue(i); // coletar possíveis colunas
 
                             // indesejado > valor sendo floodado no console por conta desse amigão aqui
                             resultado += $"{valor}\n"; // Concatenar os valores separados por tabulação
-
-                            Console.WriteLine($"Dentro do for: " + resultado);
+                        Console.WriteLine(valor);
                         }
-
                          IndexModel.logs += $"Resultado: {resultado}";
                          CriarArquivo(resultado);
 
                 }
 
-                myConnection.Close();
+                // myConnection.Close();
                 return resultado;  // Retorna o resultado obtido
 
             }
@@ -92,7 +90,7 @@ namespace INTEGRACAOsql.Pages
         public static void CriarArquivo(string conteudo)
         {
             // caminho extremamente especificamente específico, mas vou mudar isso
-            using (StreamWriter writer = System.IO.File.AppendText("C:/Users/Junior/Source/Repos/INTEGRACAOsql/logs/logs.txt"))
+            using (StreamWriter writer = System.IO.File.AppendText("C:/Users/Junior/Source/Repos/integracao-aspnetcore-sql/logs/logs.txt"))
             {
                 writer.WriteLine(conteudo);
             }
@@ -230,7 +228,6 @@ namespace INTEGRACAOsql.Pages
 
                 }
 
-                myConnection.Close();
                 return resultado;  // Retorna o resultado obtido
 
             }
