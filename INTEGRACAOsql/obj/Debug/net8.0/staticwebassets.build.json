@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HhSld9P/zPxBvgY/h4zDDVZcbrLKvi1DQpn3uaeBgRA=",
+  "Hash": "oUAOufs/QIhY7Po34z9byOQwAm/AUt2VrV9z1dLXSEQ=",
   "Source": "INTEGRACAOsql",
   "BasePath": "_content/INTEGRACAOsql",
   "Mode": "Default",
@@ -59,6 +59,27 @@
       "OriginalItemSpec": "C:\\Users\\Junior\\Source\\Repos\\INTEGRACAOsql\\INTEGRACAOsql\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\INTEGRACAOsql.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\Junior\\Source\\Repos\\INTEGRACAOsql\\INTEGRACAOsql\\wwwroot\\css\\fonts.css",
+      "SourceId": "INTEGRACAOsql",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Junior\\Source\\Repos\\INTEGRACAOsql\\INTEGRACAOsql\\wwwroot\\",
+      "BasePath": "_content/INTEGRACAOsql",
+      "RelativePath": "css/fonts#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "gwq3k1a9s7",
+      "Integrity": "8MJ8iWuuCl1E2zCiXXf9j8usipVM7uFpLb5AfNxqj+8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\fonts.css"
+    },
+    {
       "Identity": "C:\\Users\\Junior\\Source\\Repos\\INTEGRACAOsql\\INTEGRACAOsql\\wwwroot\\css\\site.css",
       "SourceId": "INTEGRACAOsql",
       "SourceType": "Discovered",
@@ -73,8 +94,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "i9tpw8eku4",
+      "Integrity": "ZoD5030vrD4FFfivFrup2SiQ5eAWGGxnmGvQm7kAtJo=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -1321,8 +1342,8 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.c2tiyv64ts.css",
-      "AssetFile": "C:\\Users\\Junior\\Source\\Repos\\INTEGRACAOsql\\INTEGRACAOsql\\wwwroot\\css\\site.css",
+      "Route": "css/fonts.css",
+      "AssetFile": "C:\\Users\\Junior\\Source\\Repos\\INTEGRACAOsql\\INTEGRACAOsql\\wwwroot\\css\\fonts.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1331,7 +1352,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "158"
         },
         {
           "Name": "Content-Type",
@@ -1339,11 +1360,48 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"8MJ8iWuuCl1E2zCiXXf9j8usipVM7uFpLb5AfNxqj+8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 20 Jan 2025 21:09:38 GMT"
+          "Value": "Wed, 22 Jan 2025 02:40:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8MJ8iWuuCl1E2zCiXXf9j8usipVM7uFpLb5AfNxqj+8="
+        }
+      ]
+    },
+    {
+      "Route": "css/fonts.gwq3k1a9s7.css",
+      "AssetFile": "C:\\Users\\Junior\\Source\\Repos\\INTEGRACAOsql\\INTEGRACAOsql\\wwwroot\\css\\fonts.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "158"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8MJ8iWuuCl1E2zCiXXf9j8usipVM7uFpLb5AfNxqj+8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 22 Jan 2025 02:40:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1353,15 +1411,15 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
+          "Value": "gwq3k1a9s7"
         },
         {
           "Name": "label",
-          "Value": "css/site.css"
+          "Value": "css/fonts.css"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-8MJ8iWuuCl1E2zCiXXf9j8usipVM7uFpLb5AfNxqj+8="
         }
       ]
     },
@@ -1376,7 +1434,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "428"
         },
         {
           "Name": "Content-Type",
@@ -1384,11 +1442,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"ZoD5030vrD4FFfivFrup2SiQ5eAWGGxnmGvQm7kAtJo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 20 Jan 2025 21:09:38 GMT"
+          "Value": "Wed, 22 Jan 2025 02:37:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1398,7 +1456,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-ZoD5030vrD4FFfivFrup2SiQ5eAWGGxnmGvQm7kAtJo="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.i9tpw8eku4.css",
+      "AssetFile": "C:\\Users\\Junior\\Source\\Repos\\INTEGRACAOsql\\INTEGRACAOsql\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "428"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZoD5030vrD4FFfivFrup2SiQ5eAWGGxnmGvQm7kAtJo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 22 Jan 2025 02:37:54 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i9tpw8eku4"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZoD5030vrD4FFfivFrup2SiQ5eAWGGxnmGvQm7kAtJo="
         }
       ]
     },

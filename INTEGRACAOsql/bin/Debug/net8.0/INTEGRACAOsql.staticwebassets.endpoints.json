@@ -85,8 +85,45 @@
       ]
     },
     {
-      "Route": "css/site.c2tiyv64ts.css",
-      "AssetFile": "css/site.css",
+      "Route": "css/fonts.css",
+      "AssetFile": "css/fonts.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "158"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8MJ8iWuuCl1E2zCiXXf9j8usipVM7uFpLb5AfNxqj+8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 22 Jan 2025 02:40:04 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8MJ8iWuuCl1E2zCiXXf9j8usipVM7uFpLb5AfNxqj+8="
+        }
+      ]
+    },
+    {
+      "Route": "css/fonts.gwq3k1a9s7.css",
+      "AssetFile": "css/fonts.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -99,7 +136,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "158"
         },
         {
           "Name": "Content-Type",
@@ -107,25 +144,25 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"8MJ8iWuuCl1E2zCiXXf9j8usipVM7uFpLb5AfNxqj+8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 20 Jan 2025 21:09:38 GMT"
+          "Value": "Wed, 22 Jan 2025 02:40:04 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
+          "Value": "gwq3k1a9s7"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-8MJ8iWuuCl1E2zCiXXf9j8usipVM7uFpLb5AfNxqj+8="
         },
         {
           "Name": "label",
-          "Value": "css/site.css"
+          "Value": "css/fonts.css"
         }
       ]
     },
@@ -144,7 +181,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "428"
         },
         {
           "Name": "Content-Type",
@@ -152,17 +189,62 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"ZoD5030vrD4FFfivFrup2SiQ5eAWGGxnmGvQm7kAtJo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 20 Jan 2025 21:09:38 GMT"
+          "Value": "Wed, 22 Jan 2025 02:37:54 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-ZoD5030vrD4FFfivFrup2SiQ5eAWGGxnmGvQm7kAtJo="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.i9tpw8eku4.css",
+      "AssetFile": "css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "428"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZoD5030vrD4FFfivFrup2SiQ5eAWGGxnmGvQm7kAtJo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 22 Jan 2025 02:37:54 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i9tpw8eku4"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZoD5030vrD4FFfivFrup2SiQ5eAWGGxnmGvQm7kAtJo="
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
         }
       ]
     },

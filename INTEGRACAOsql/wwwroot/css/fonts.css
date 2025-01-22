@@ -1,0 +1,8 @@
+﻿@font-face {
+    font-family: CamingoCode;
+    src: url(../../../fontes/CamingoCode-Regular.ttf);
+}
+
+.console-font {
+    font-family: CamingoCode;
+}
