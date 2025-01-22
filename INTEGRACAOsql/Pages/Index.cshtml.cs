@@ -47,26 +47,11 @@ namespace INTEGRACAOsql.Pages
                     CommandText = comando
                 };
 
-                Console.WriteLine("Quase");
-
-
                 myConnection.Open();
-
-                Console.WriteLine("Conectou a db");
 
                 // Executando o comando e vendo os resultados
                 using var myReader = myCommand.ExecuteReader();
-                if (myReader == null)
-                {
-                    Console.WriteLine("deu rui");
-
-                }
                 string resultado = "";
-
-
-                Console.WriteLine("capaz");
-                Console.WriteLine("capaz: " + myReader);
-                Console.WriteLine("capaz: " + myReader.Read());
 
                 // Verifica se o reader tem linhas antes de começar o while
                 if (!myReader.HasRows)
