@@ -102,7 +102,7 @@ namespace INTEGRACAOsql.Pages
         public static void CriarArquivo(string conteudo)
         {
             // caminho extremamente especificamente específico, mas vou mudar isso
-            using (StreamWriter writer = System.IO.File.AppendText("C:/Users/Junior/Source/Repos/INTEGRACAOsql/logs/logs.txt"))
+            using (StreamWriter writer = System.IO.File.AppendText("C:/Users/Junior/Source/Repos/integracao-aspnetcore-sql/logs/logs.txt"))
             {
                 writer.WriteLine(conteudo);
             }
