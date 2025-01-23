@@ -6,3 +6,12 @@
 .console-font {
     font-family: CamingoCode;
 }
+
+:root {
+    --color: #aaa;
+    --background: #000;
+    --size: 1;
+    --font: monospace;
+    /* --glow: 1 */
+    --animation: terminal-blink;
+}
