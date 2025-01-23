@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using MySql.Data.MySqlClient;
 using System;
 using System.IO;
+using INTEGRACAOsql.Filemanager;
 
 namespace INTEGRACAOsql.Pages
 {
@@ -12,6 +13,7 @@ namespace INTEGRACAOsql.Pages
     using System;
     using System.Data.Common;
     using System.IO;
+    using System.Runtime.CompilerServices;
     using System.Security.Cryptography;
     using System.Security.Cryptography.X509Certificates;
     using System.Text;
@@ -114,18 +116,25 @@ namespace INTEGRACAOsql.Pages
             // esses blocos garantem que a conexão esteja ativa, e, se não estiver, ele reabre ela e segue
             try
             {
+
                 myConnection = new MySqlConnection(myConnectionString);
                 myConnection.Open();
                 IndexModel.statusConexao = true;
 
-                try
+                if (IndexModel.statusConexao == true)
                 {
-                    inserirComando(comando);
+                    try
+                    {
+                        inserirComando(comando);
 
-                }
-                catch (MySqlException ex)
+                    }
+                    catch (MySqlException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                } else
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("É necessário que uma conexão seja estabelecida para a inserção de comandos");
                 }
 
             }
@@ -185,8 +194,14 @@ namespace INTEGRACAOsql.Pages
                 myConnection.Close();
                 Console.WriteLine("Conexão fechada");
 
+                logs = null;
+                uid = null;
+
                 IndexModel.logs = "Conexão fechada com sucesso";
                 statusConexao = false;
+
+                FileManager.Delete("C:/Users/Junior/Source/Repos/integracao-aspnetcore-sql/logs/logs.txt");
+
             }
             catch (MySqlException ex)
             {
