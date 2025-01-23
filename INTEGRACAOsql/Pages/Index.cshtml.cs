@@ -18,7 +18,7 @@ namespace INTEGRACAOsql.Pages
 
     public class IndexModel : PageModel
     {
-        // variáveis globais
+        
         public static string setComando { get; set; }
         public static string logs { get; set; }
         public static string myConnectionString { get; set; }
@@ -32,13 +32,12 @@ namespace INTEGRACAOsql.Pages
         
         string comando = IndexModel.setComando;
 
-        private string conectar(string comando)
+        private string inserirComando(string comando)
         {
             try
             {
 
                 myConnection = new MySqlConnection(myConnectionString);
-                Console.WriteLine("passou na db");
 
                 // Criando o comando e setando os parâmetros
                 MySqlCommand myCommand = new MySqlCommand
@@ -65,8 +64,6 @@ namespace INTEGRACAOsql.Pages
                 while (myReader.Read())
                 {
 
-                    Console.WriteLine("Entrou no while");
-
                     // gambiarra do gepeteco pra organizar as strings nas logs
                     string linhaAtual = "";
                         for (int i = 0; i < myReader.FieldCount; i++)
@@ -75,8 +72,7 @@ namespace INTEGRACAOsql.Pages
                             // filtra valores numéricos pra não irem para as logs
                             if (!(valor is int || valor is long || valor is decimal || valor is double || valor is float))
                             {
-                                linhaAtual += $"{valor}\t"; // Concatenar os valores não numéricos com tabulação
-                                Console.WriteLine($"Dentro do for (não numérico): {i} - {valor}");
+                                linhaAtual += $"{valor}\t";
                             }
                         }
 
@@ -86,15 +82,14 @@ namespace INTEGRACAOsql.Pages
 
                 }
 
-                // myConnection.Close();
-                return resultado;  // return só pra garantir
+                return resultado;
 
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
                 var mensagem = $"Erro: {ex.Message}";
-                return mensagem;  // Retorna a mensagem de erro
+                return mensagem;
             }
         }
 
@@ -107,29 +102,25 @@ namespace INTEGRACAOsql.Pages
                 writer.WriteLine(conteudo);
             }
         }
-
-        // coletando o input
+        
+        // captura o input do html e recebe o comando. utiliza a funcao "inserirComando(comando) pra enviá-lo para a DB
         [HttpPost]
         public IActionResult OnPostComandos(string comando)
         {
-            Console.WriteLine("Recebido no Post: " + comando);
             IndexModel.setComando = comando;
 
             comando = IndexModel.setComando;
-
-            // ter certeza de que a conexão está online
-
+            
+            // esses blocos garantem que a conexão esteja ativa, e, se não estiver, ele reabre ela e segue
             try
             {
                 myConnection = new MySqlConnection(myConnectionString);
                 myConnection.Open();
                 IndexModel.statusConexao = true;
-                Console.WriteLine("Conexão aberta " + 2);
 
                 try
                 {
-                    Console.WriteLine("Abriu o try-catch da func de comandos");
-                    conectar(comando);
+                    inserirComando(comando);
 
                 }
                 catch (MySqlException ex)
@@ -148,7 +139,6 @@ namespace INTEGRACAOsql.Pages
             return RedirectToPage();
         }
 
-        // eu sei, comentário desnecessário, mas preciso dizer que essa função aqui abre a conexão
         void abrirConexao(string stringconexao, string database)
         {
             try
@@ -160,7 +150,7 @@ namespace INTEGRACAOsql.Pages
                 
                 try
                 {
-                teste(database);
+                    verTabelas(database);
 
                 } catch (MySqlException ex)
                 {
@@ -178,12 +168,6 @@ namespace INTEGRACAOsql.Pages
         [HttpPost]
         public IActionResult OnPostCredenciais(string server, string uid, string pwd, string database)
         {
-
-            Console.WriteLine($"Server: {server}");
-            Console.WriteLine($"UID: {uid}");
-            Console.WriteLine($"Password: {pwd}");
-            Console.WriteLine($"Database: {database}");
-
             myConnectionString = $"server={server};uid={uid};pwd={pwd};database={database}";
 
             abrirConexao(myConnectionString, database);
@@ -191,7 +175,30 @@ namespace INTEGRACAOsql.Pages
             return RedirectToPage();
         }
 
-        private string teste(string database)
+        // fechando a conexão 
+        [HttpPost]
+        public IActionResult OnPostFecharConexao()
+        {
+            try
+            {
+                myConnection = new MySqlConnection(myConnectionString);
+                myConnection.Close();
+                Console.WriteLine("Conexão fechada");
+
+                IndexModel.logs = "Conexão fechada com sucesso";
+                statusConexao = false;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Erro ao fechar conexão: " + ex.Message);
+            }
+
+            // return pq se não o IActionResult dá cria
+            return RedirectToPage();
+        }
+
+        // essa função é executada logo após a conexão do DB ser estabelecida, ela captura as tabelas disponíveis na db e imprime no console
+        private string verTabelas(string database)
         {
             try
             {
@@ -206,12 +213,6 @@ namespace INTEGRACAOsql.Pages
                     myConnection.Open();
                 }
 
-                Console.WriteLine("DB: " + database);
-
-                /* inserir este comando na funcao TESTE()
-                * SHOW TABLES - FEITO OK;
-                */
-
                 // Criando o comando e setando os parâmetros
                 MySqlCommand myCommand = new MySqlCommand
                 {
@@ -225,12 +226,6 @@ namespace INTEGRACAOsql.Pages
 
                 while (myReader.Read())
                 {
-                        //var table = myReader.GetSchemaTable(); DESCARTA 
-                        //Guardar e enviar os resultados para a variável logs
-                        //Console.WriteLine("Logs: " + table);
-                        //resultado = $"{table}";
-
-                        // nova versão >
 
                         string tableName = myReader.GetString(0);
                         Console.WriteLine($"Tabela encontrada: {tableName}");
@@ -240,19 +235,16 @@ namespace INTEGRACAOsql.Pages
 
                 }
 
-                return resultado;  // Retorna o resultado obtido
-
+                return resultado;
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
                 var mensagem = $"Erro: {ex.Message}";
-                return mensagem;  // Retorna a mensagem de erro
+                return mensagem; 
             }
         }
 
-
-        // get normal
         [HttpGet]
         public void OnGet()
         {

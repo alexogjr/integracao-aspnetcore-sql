@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("INTEGRACAOsql")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4dce68c631c8f4ff010ca76aa87a693d553a8bc8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8eb28fbb96d16c0627bf430d8c08db3ec78301c")]
 [assembly: System.Reflection.AssemblyProductAttribute("INTEGRACAOsql")]
 [assembly: System.Reflection.AssemblyTitleAttribute("INTEGRACAOsql")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
