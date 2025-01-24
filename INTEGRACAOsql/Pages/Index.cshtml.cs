@@ -29,13 +29,24 @@ namespace INTEGRACAOsql.Pages
         public static string pwd { get; set; }
         public static string database { get; set; }
         public static bool statusConexao { get; set; }
+        public static bool conexao { get; set; }
         
         MySqlConnection myConnection;
         
         string comando = IndexModel.setComando;
 
-        private string inserirComando(string comando)
+        public IActionResult inserirComando(string comando)
         {
+
+            if (conexao == false)
+            {
+                IndexModel.logs = "A conexão precisa ser estabelecida para a inserção de comandos funcionar corretamente.";
+                IndexModel.statusConexao = false;
+                IndexModel.conexao = false;
+                return RedirectToPage();
+
+            } else {
+
             try
             {
 
@@ -60,7 +71,7 @@ namespace INTEGRACAOsql.Pages
                     Console.WriteLine("Nenhum registro encontrado.");
                     IndexModel.logs += "Nenhum registro encontrado.\n";
                     CriarArquivo("Nenhum registro encontrado.");
-                    return "Nenhum registro encontrado.";
+                    return RedirectToPage(); ;
                 }
 
                 while (myReader.Read())
@@ -84,14 +95,15 @@ namespace INTEGRACAOsql.Pages
 
                 }
 
-                return resultado;
+                return RedirectToPage();
 
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
                 var mensagem = $"Erro: {ex.Message}";
-                return mensagem;
+                return RedirectToPage();
+            }
             }
         }
 
@@ -104,7 +116,7 @@ namespace INTEGRACAOsql.Pages
                 writer.WriteLine(conteudo);
             }
         }
-        
+
         // captura o input do html e recebe o comando. utiliza a funcao "inserirComando(comando) pra enviá-lo para a DB
         [HttpPost]
         public IActionResult OnPostComandos(string comando)
@@ -112,40 +124,51 @@ namespace INTEGRACAOsql.Pages
             IndexModel.setComando = comando;
 
             comando = IndexModel.setComando;
-            
+
             // esses blocos garantem que a conexão esteja ativa, e, se não estiver, ele reabre ela e segue
-            try
+
+            if (conexao == false)
+            {
+                IndexModel.logs = "A conexão precisa ser estabelecida para a inserção de comandos funcionar corretamente.";
+                IndexModel.statusConexao = false;
+                return RedirectToPage();
+            }
+            else
             {
 
-                myConnection = new MySqlConnection(myConnectionString);
-                myConnection.Open();
-                IndexModel.statusConexao = true;
-
-                if (IndexModel.statusConexao == true)
+                try
                 {
-                    try
-                    {
-                        inserirComando(comando);
 
-                    }
-                    catch (MySqlException ex)
+                    myConnection = new MySqlConnection(myConnectionString);
+                    myConnection.Open();
+
+                    if (IndexModel.statusConexao == true)
                     {
-                        Console.WriteLine(ex.Message);
+                        try
+                        {
+                            inserirComando(comando);
+
+                        }
+                        catch (MySqlException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
                     }
-                } else
+                    else
+                    {
+                        Console.WriteLine("É necessário que uma conexão seja estabelecida para a inserção de comandos");
+                    }
+
+                }
+                catch (MySqlException ex)
                 {
-                    Console.WriteLine("É necessário que uma conexão seja estabelecida para a inserção de comandos");
+                    Console.WriteLine(ex.Message);
+                    IndexModel.statusConexao = false;
                 }
 
+                // return pq se não o IActionResult dá cria
+                return RedirectToPage();
             }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-                IndexModel.statusConexao = false;
-            }
-
-            // return pq se não o IActionResult dá cria
-            return RedirectToPage();
         }
 
         void abrirConexao(string stringconexao, string database)
@@ -155,6 +178,7 @@ namespace INTEGRACAOsql.Pages
                 myConnection = new MySqlConnection(myConnectionString);
                 myConnection.Open();
                 IndexModel.statusConexao = true;
+                conexao = true;
                 Console.WriteLine("Conexão aberta");
                 
                 try
@@ -196,9 +220,13 @@ namespace INTEGRACAOsql.Pages
 
                 logs = null;
                 uid = null;
+                server = null;
+                database = null;
+                pwd = null;
 
+                IndexModel.statusConexao = false;
                 IndexModel.logs = "Conexão fechada com sucesso";
-                statusConexao = false;
+                
 
                 FileManager.Delete("C:/Users/Junior/Source/Repos/integracao-aspnetcore-sql/logs/logs.txt");
 
@@ -263,6 +291,7 @@ namespace INTEGRACAOsql.Pages
         [HttpGet]
         public void OnGet()
         {
+            Console.WriteLine("status da conexao:" + IndexModel.statusConexao);
         }
     }
 }

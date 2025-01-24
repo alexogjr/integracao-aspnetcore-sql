@@ -103,21 +103,18 @@
 
 <script>
 
+    document.addEventListener("DOMContentLoaded", function() {
 
-    function logg() {
-    let modo = "@ViewData["Title"]"
-        console.log(modo)
-    }
+        console.log($`status da conexao no front: `, "@ViewData["Title"]")
 
-    logg()
-    const button = document.getElementById("abrirConexao")
-    const divButton = document.querySelector(".divButton")
-    if ("@ViewData["Title"]" == "True") {
-        divButton.innerHTML = `
-        <button id="fecharConexao" type="submit" data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="block text-white bg-[#550000] hover:bg-[#370101] focus:ring-4 focus:outline-none focus:ring-[#550000] font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">Fechar Conexão</button>`
-    } else {
+        const button = document.getElementById("abrirConexao")
+        const divButton = document.querySelector(".divButton")
+        if ("@ViewData["Title"]" == "True") {
+            divButton.innerHTML = `
+            <button id="fecharConexao" type="submit" data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="block text-white bg-[#550000] hover:bg-[#370101] focus:ring-4 focus:outline-none focus:ring-[#550000] font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">Fechar Conexão</button>`
+        } else if ("@ViewData["Title"]" == "False") {
+            divButton.innerHTML = `<button id="abrirConexao" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-[#002b55] hover:bg-[#042740] focus:ring-4 focus:outline-none focus:ring-[#042740] font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">Abrir conexão</button>`
+        }
 
-        divButton.innerHTML = `<button id="abrirConexao" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-[#002b55] hover:bg-[#042740] focus:ring-4 focus:outline-none focus:ring-[#042740] font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">Abrir conexão</button>`
-
-    }
+    })
 </script>
