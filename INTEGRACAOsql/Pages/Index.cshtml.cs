@@ -114,7 +114,7 @@ namespace INTEGRACAOsql.Pages
             using (StreamWriter writer = System.IO.File.AppendText("C:/Users/Junior/Source/Repos/integracao-aspnetcore-sql/logs/logs.txt"))
             {
                 writer.WriteLine(conteudo);
-            }
+            } 
         }
 
         // captura o input do html e recebe o comando. utiliza a funcao "inserirComando(comando) pra enviá-lo para a DB
@@ -178,6 +178,7 @@ namespace INTEGRACAOsql.Pages
                 myConnection = new MySqlConnection(myConnectionString);
                 myConnection.Open();
                 IndexModel.statusConexao = true;
+                IndexModel.database = database;
                 conexao = true;
                 Console.WriteLine("Conexão aberta");
                 
