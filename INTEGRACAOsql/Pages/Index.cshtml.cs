@@ -91,7 +91,7 @@ namespace INTEGRACAOsql.Pages
 
                     resultado += linhaAtual.TrimEnd() + "\n"; // quebra de linha
                     IndexModel.logs += $"{linhaAtual.TrimEnd()}\n"; // loggando a linha
-                    CriarArquivo(linhaAtual.TrimEnd()); // salvando a linha no logs.txt
+                    CriarArquivo($"< {comando}\n > linhaAtual.TrimEnd()"); // salvando a linha no logs.txt
 
                 }
 
