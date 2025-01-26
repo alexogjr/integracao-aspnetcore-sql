@@ -69,8 +69,8 @@ namespace INTEGRACAOsql.Pages
                 if (!myReader.HasRows)
                 {
                     Console.WriteLine("Nenhum registro encontrado.");
-                    IndexModel.logs += "Nenhum registro encontrado.\n";
-                    CriarArquivo("Nenhum registro encontrado.");
+                    IndexModel.logs += "> Nenhum registro encontrado.\n";
+                    CriarArquivo("> Nenhum registro encontrado.");
                     return RedirectToPage(); ;
                 }
 
@@ -90,8 +90,8 @@ namespace INTEGRACAOsql.Pages
                         }
 
                     resultado += linhaAtual.TrimEnd() + "\n"; // quebra de linha
-                    IndexModel.logs += $"{linhaAtual.TrimEnd()}\n"; // loggando a linha
-                    CriarArquivo($"< {comando}\n > linhaAtual.TrimEnd()"); // salvando a linha no logs.txt
+                    IndexModel.logs += $"> {linhaAtual.TrimEnd()}\n"; // loggando a linha
+                    CriarArquivo($"> {linhaAtual.TrimEnd()}"); // salvando a linha no logs.txt
 
                 }
 
@@ -102,6 +102,7 @@ namespace INTEGRACAOsql.Pages
             {
                 Console.WriteLine(ex.Message);
                 var mensagem = $"Erro: {ex.Message}";
+                IndexModel.logs += $"> {mensagem}";
                 return RedirectToPage();
             }
             }
@@ -129,7 +130,7 @@ namespace INTEGRACAOsql.Pages
 
             if (conexao == false)
             {
-                IndexModel.logs = "A conexão precisa ser estabelecida para a inserção de comandos funcionar corretamente.";
+                IndexModel.logs = "> A conexão precisa ser estabelecida para a inserção de comandos funcionar corretamente.";
                 IndexModel.statusConexao = false;
                 return RedirectToPage();
             }
@@ -226,7 +227,7 @@ namespace INTEGRACAOsql.Pages
                 pwd = null;
 
                 IndexModel.statusConexao = false;
-                IndexModel.logs = "Conexão fechada com sucesso";
+                IndexModel.logs = "> Conexão fechada com sucesso";
                 
 
                 FileManager.Delete("C:/Users/Junior/Source/Repos/integracao-aspnetcore-sql/logs/logs.txt");
@@ -273,9 +274,9 @@ namespace INTEGRACAOsql.Pages
 
                         string tableName = myReader.GetString(0);
                         Console.WriteLine($"Tabela encontrada: {tableName}");
-                        resultado += $"{tableName} \n";
+                        resultado += $"> {tableName} \n";
                         CriarArquivo(resultado);
-                        IndexModel.logs = resultado;
+                        IndexModel.logs += $"{resultado}";
 
                 }
 

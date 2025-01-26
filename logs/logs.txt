@@ -3,42 +3,19 @@ stable
 stable 
 usuarios 
 
-junior
-felipe
-fernando
+> junior
+> felipe
+> fernando
 stable 
 
 stable 
 usuarios 
 
-junior
-felipe
-fernando
-stable 
+> stable 
 
-stable 
-usuarios 
+> stable 
+> usuarios 
 
-< SELECT * FROM usuarios;
- > linhaAtual.TrimEnd()
-< SELECT * FROM usuarios;
- > linhaAtual.TrimEnd()
-< SELECT * FROM usuarios;
- > linhaAtual.TrimEnd()
-< SELECT * FROM usuarios;
- > linhaAtual.TrimEnd()
-< SELECT * FROM usuarios;
- > linhaAtual.TrimEnd()
-< SELECT * FROM usuarios;
- > linhaAtual.TrimEnd()
-stable 
-
-stable 
-usuarios 
-
-< SELECT * FROM usuarios;
- > linhaAtual.TrimEnd()
-< SELECT * FROM usuarios;
- > linhaAtual.TrimEnd()
-< SELECT * FROM usuarios;
- > linhaAtual.TrimEnd()
+> junior
+> felipe
+> fernando

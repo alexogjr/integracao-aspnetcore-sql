@@ -1615,11 +1615,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Junior\\source\\repos\\integracao-aspnetcore-sql\\INTEGRACAOsql\\INTEGRACAOsql.csproj",
+      "projectUniqueName": "C:\\Users\\Junior\\Source\\Repos\\integracao-aspnetcore-sql\\INTEGRACAOsql\\INTEGRACAOsql.csproj",
       "projectName": "INTEGRACAOsql",
-      "projectPath": "C:\\Users\\Junior\\source\\repos\\integracao-aspnetcore-sql\\INTEGRACAOsql\\INTEGRACAOsql.csproj",
+      "projectPath": "C:\\Users\\Junior\\Source\\Repos\\integracao-aspnetcore-sql\\INTEGRACAOsql\\INTEGRACAOsql.csproj",
       "packagesPath": "C:\\Users\\Junior\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Junior\\source\\repos\\integracao-aspnetcore-sql\\INTEGRACAOsql\\obj\\",
+      "outputPath": "C:\\Users\\Junior\\Source\\Repos\\integracao-aspnetcore-sql\\INTEGRACAOsql\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1634,7 +1634,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
